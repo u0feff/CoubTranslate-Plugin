@@ -20,23 +20,23 @@
     const style = document.createElement("style");
 
     style.innerHTML = `
-    .translateButton {
-      height: auto;
-      display: block;
-      padding: 0;
-      border: 0;
-      background: none;
-      margin: 0;
-      cursor: pointer;
-    }
+      .translateButton {
+        height: auto;
+        display: block;
+        padding: 0;
+        border: 0;
+        background: none;
+        margin: 0;
+        cursor: pointer;
+      }
 
-    .translateButton svg {
-      display: block;
-    }
+      .translateButton svg {
+        display: block;
+      }
 
-    .translateButton:hover svg path {
-      fill: #0332FF;
-    }
+      .translateButton:hover svg path {
+        fill: #0332FF;
+      }
     `;
 
     return style;
@@ -48,16 +48,16 @@
     buttonElement.classList.add("translateButton");
 
     buttonElement.innerHTML = `
-    <i>
-      <svg width="24px" height="24px" viewbox="-5 -5 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M39,18.67H35.42l-4.2,11.12A29,29,0,0,1,20.6,24.91a28.76,28.76,0,0,0,7.11-14.49h5.21a2,2,0,0,0,0-4H19.67V2a2,2,0,1,0-4,0V6.42H2.41a2,2,0,0,0,0,4H7.63a28.73,28.73,0,0,0,7.1,14.49A29.51,29.51,0,0,1,3.27,30a2,2,0,0,0,.43,4,1.61,1.61,0,0,0,.44-.05,32.56,32.56,0,0,0,13.53-6.25,32,32,0,0,0,12.13,5.9L22.83,52H28l2.7-7.76H43.64L46.37,52h5.22Zm-15.3-8.25a23.76,23.76,0,0,1-6,11.86,23.71,23.71,0,0,1-6-11.86Zm8.68,29.15,4.83-13.83L42,39.57Z"
-          fill="#000000"
-        ></path>
-      </svg>
-    </i>
+      <i>
+        <svg width="24px" height="24px" viewbox="-5 -5 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M39,18.67H35.42l-4.2,11.12A29,29,0,0,1,20.6,24.91a28.76,28.76,0,0,0,7.11-14.49h5.21a2,2,0,0,0,0-4H19.67V2a2,2,0,1,0-4,0V6.42H2.41a2,2,0,0,0,0,4H7.63a28.73,28.73,0,0,0,7.1,14.49A29.51,29.51,0,0,1,3.27,30a2,2,0,0,0,.43,4,1.61,1.61,0,0,0,.44-.05,32.56,32.56,0,0,0,13.53-6.25,32,32,0,0,0,12.13,5.9L22.83,52H28l2.7-7.76H43.64L46.37,52h5.22Zm-15.3-8.25a23.76,23.76,0,0,1-6,11.86,23.71,23.71,0,0,1-6-11.86Zm8.68,29.15,4.83-13.83L42,39.57Z"
+            fill="#000000"
+          ></path>
+        </svg>
+      </i>
     `;
 
     return buttonElement;
