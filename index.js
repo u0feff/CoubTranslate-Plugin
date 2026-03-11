@@ -1,10 +1,7 @@
 // ==UserScript==
-// @name         Coub Title Translator (Gemini) - Styled Button v2
-// @namespace    http://tampermonkey.net/
-// @version      2.9.1
-// @description  Adds a "Translate" button to Coub items.
-// @author       Your Name
-// @match        https://coub.com/*
+// @name         Coub translate
+// @description  Adds button to translate coubs
+// @match        *://coub.com/*
 // @grant        GM_xmlhttpRequest
 // @connect      generativelanguage.googleapis.com
 // ==/UserScript==
@@ -73,7 +70,7 @@
     return new Promise((resolve, reject) => {
       if (
         textParts.every(
-          (x) => !x || x.trim() === "" || x.length < 3 || /[а-яА-ЯЁё]/.test(x)
+          (x) => !x || x.trim() === "" || x.length < 3 || /[а-яА-ЯЁё]/.test(x),
         )
       ) {
         resolve(textParts);
@@ -109,7 +106,7 @@
 
           answer = answer.replace(
             /^[^a-zA-Zа-яА-ЯЁё0-9]+|[^a-zA-Zа-яА-ЯЁё0-9]+$/g,
-            ""
+            "",
           );
 
           let answerParts = answer.split("\n");
@@ -130,15 +127,15 @@
    */
   function modifyCoub(coubElement) {
     let descriptionOriginalElement = coubElement.querySelector(
-      ".coub-description__title .description__title.-original"
+      ".coub-description__title .description__title.-original",
     );
     let descriptionTranslationElement = coubElement.querySelector(
-      ".coub-description__title .description__title.-translation"
+      ".coub-description__title .description__title.-translation",
     );
 
     if (!descriptionOriginalElement) {
       descriptionOriginalElement = coubElement.querySelector(
-        ".coub-description__title .description__title"
+        ".coub-description__title .description__title",
       );
     }
 
@@ -147,7 +144,7 @@
         descriptionOriginalElement.cloneNode(true);
 
       descriptionOriginalElement.parentElement.prepend(
-        descriptionTranslationElement
+        descriptionTranslationElement,
       );
 
       descriptionOriginalElement.classList.add("-force-hidden");
@@ -173,7 +170,7 @@
         } else {
           coubElement.setAttribute(
             TRANSLATE_IN_PROGRESS_ATTRIBUTE,
-            TRANSLATE_IN_PROGRESS_ATTRIBUTE
+            TRANSLATE_IN_PROGRESS_ATTRIBUTE,
           );
 
           const textElementsMap = [];
@@ -191,7 +188,7 @@
 
           try {
             const translationResult = await translateText(
-              textElementsMap.map((x) => x.text)
+              textElementsMap.map((x) => x.text),
             );
 
             for (let i = 0; i < textElementsMap.length; i++) {
@@ -212,7 +209,7 @@
     });
 
     const buttonsContainerElement = coubElement.querySelector(
-      ".coub-description__about__inner > .coub-description__sharing-dropdown"
+      ".coub-description__about__inner > .coub-description__sharing-dropdown",
     ).parentElement;
 
     buttonsContainerElement.prepend(translateButton);
@@ -229,7 +226,7 @@
 
       coubElement.setAttribute(
         TRANSLATION_ENABLED_ATTRIBUTE,
-        TRANSLATION_ENABLED_ATTRIBUTE
+        TRANSLATION_ENABLED_ATTRIBUTE,
       );
 
       modifyCoub(coubElement);
